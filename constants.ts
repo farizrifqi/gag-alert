@@ -1,0 +1,32 @@
+export const MAIN_API = `https://growagardenapi.vercel.app/api`;
+export const RARITY_LEVEL = [
+  "common",
+  "uncommon",
+  "rare",
+  "legendary",
+  "mythical",
+  "divine",
+  "prismatic",
+];
+export const SEEDS_RARITY = {
+  carrot: 0,
+  strawberry: 0,
+  blueberry: 1,
+  orangetulip: 1,
+  tomato: 2,
+  corn: 2,
+  daffodil: 2,
+  watermelon: 3,
+  pumpkin: 3,
+  apple: 3,
+  bamboo: 3,
+  coconut: 4,
+  dragonfruit: 4,
+  mango: 4,
+  grape: 5,
+  mushroom: 5,
+  pepper: 5,
+  cacao: 5,
+  beanstalk: 6,
+  emberlily: 6,
+};
