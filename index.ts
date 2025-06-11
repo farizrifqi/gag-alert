@@ -79,16 +79,14 @@ const getRestockTime = async () => {
       )}`,
     });
 
-    await sleep(time);
-    return (request as RestockTimeResponse).seeds.timestamp;
+    return (request as RestockTimeResponse).seeds.timestamp + 5000;
   } catch (err: any) {
     logger.log({
       level: "error",
       label: "getRestockTime",
       message: `Error: ${err.message}`,
     });
-    await sleep(1000 * 60 * 5 + 1000);
-    return null;
+    return 1000 * 60 * 5;
   }
 };
 
@@ -96,6 +94,10 @@ const run = async () => {
   const a = await getStock();
   const restockTime = await getRestockTime();
   sendToDiscordGear(a, restockTime);
+  const currentTime = new Date().getTime();
+  const time = restockTime - currentTime;
+  await sleep(time);
+  return await run();
 };
 
 run();
