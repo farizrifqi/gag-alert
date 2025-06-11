@@ -69,7 +69,8 @@ const getRestockTime = async () => {
       timeout(30000),
     ]);
     const currentTime = new Date().getTime();
-    const time = (request as RestockTimeResponse).seeds.timestamp - currentTime;
+    const time =
+      (request as RestockTimeResponse).seeds.timestamp + 5000 - currentTime;
     logger.log({
       level: "info",
       label: "getRestockTime",
@@ -85,7 +86,7 @@ const getRestockTime = async () => {
       label: "getRestockTime",
       message: `Error: ${err.message}`,
     });
-    await sleep(1000 * 60 * 5);
+    await sleep(1000 * 60 * 5 + 1000);
   }
 };
 
