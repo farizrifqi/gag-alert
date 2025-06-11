@@ -70,7 +70,7 @@ const getRestockTime = async () => {
     ]);
     const currentTime = new Date().getTime();
     const time =
-      (request as RestockTimeResponse).seeds.timestamp + 15000 - currentTime;
+      (request as RestockTimeResponse).seeds.timestamp + 30000 - currentTime;
     logger.log({
       level: "info",
       label: "getRestockTime",
@@ -102,7 +102,7 @@ const run = async () => {
     message: `Sent to discord.`,
   });
   const currentTime = new Date().getTime();
-  const time = restockTime + 15000 - currentTime;
+  const time = restockTime + 30000 - currentTime;
   await sleep(time);
   return await run();
 };
