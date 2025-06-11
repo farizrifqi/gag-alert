@@ -7,7 +7,8 @@ const rarityBolder = (text: string, rarity: number) => {
   return rarity >= MIN_RARITY ? `**${text}**` : text;
 };
 export const sendToDiscordGear = async (
-  data: GetStockResponse
+  data: GetStockResponse,
+  restockTime: number | null
 ): Promise<void> => {
   const seedsEmbeds = {
     title: "Seeds Stock",
@@ -65,7 +66,11 @@ export const sendToDiscordGear = async (
   };
   const payload = {
     username: "AnaknyaBurhan",
-    content: "New stock update!",
+    content: `New stock update!\n\n${
+      restockTime
+        ? `Restock time: <t:${Math.floor(restockTime / 1000)}:R>`
+        : "Restock time is not available"
+    }`,
     embeds: [seedsEmbeds, gearEmbeds],
   };
   await fetch(config.discord_webhook_url, {

@@ -80,6 +80,7 @@ const getRestockTime = async () => {
     });
 
     await sleep(time);
+    return (request as RestockTimeResponse).seeds.timestamp;
   } catch (err: any) {
     logger.log({
       level: "error",
@@ -87,13 +88,14 @@ const getRestockTime = async () => {
       message: `Error: ${err.message}`,
     });
     await sleep(1000 * 60 * 5 + 1000);
+    return null;
   }
 };
 
 const run = async () => {
   const a = await getStock();
-  sendToDiscordGear(a);
-  await getRestockTime();
+  const restockTime = await getRestockTime();
+  sendToDiscordGear(a, restockTime);
 };
 
 run();
