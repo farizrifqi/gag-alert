@@ -96,6 +96,11 @@ const run = async () => {
   const a = await getStock();
   const restockTime = await getRestockTime();
   sendToDiscordGear(a, restockTime);
+  logger.log({
+    level: "debug",
+    label: "getRestockTime",
+    message: `Sent to discord.`,
+  });
   const currentTime = new Date().getTime();
   const time = restockTime + 5000 - currentTime;
   await sleep(time);

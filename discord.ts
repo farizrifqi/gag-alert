@@ -3,7 +3,6 @@ import { RARITY_LEVEL, SEEDS_RARITY } from "./constants";
 import config from "./config.json";
 const MIN_RARITY = 3; //mythical
 const rarityBolder = (text: string, rarity: number) => {
-  console.log(`Rarity for ${text}: ${rarity}`);
   return rarity >= MIN_RARITY ? `**${text}**` : text;
 };
 export const sendToDiscordGear = async (
